@@ -12,7 +12,6 @@ $usuario = addslashes($_POST['usuario']);
 $senha = addslashes($_POST['senha']);
 if($u->login($usuario, $senha) == true){
     if(isset($_SESSION['codUser'])){
-        $_SESSION['nomUser'] = $usuario;
         header("Location: index.php");
     }else{
         $_SESSION['nao_autenticado'] = true;

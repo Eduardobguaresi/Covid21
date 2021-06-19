@@ -1,11 +1,5 @@
 <?php
-session_start();
-if($_SESSION['codUser'] != NULL){
-  include 'header_logado.php';
-}else{
-  $_SESSION['codUser'] = NULL;
-  include 'header.php';
-}
+include 'header.php';
 ?>
 <html>
 <body>

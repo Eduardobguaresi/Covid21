@@ -1,6 +1,5 @@
 <?php
-    session_start();
-    include "header_logado.php";
+    include 'header.php';
 ?>
 <html>
 <form action= "addsintomas.php" method="post" >
@@ -33,15 +32,15 @@
         </tr>
         <tr align="center">
             <td><label for="dorgarganta"><b>Dor de Garganta</b></label></td>
-            <td><label for="congnasal"><b>Congestão Nasal</b></label></td>
+            <td><label for="diarreia"><b>Diarreia</b></label></td>
         </tr>
 
         <tr align="center">
         <td><input type="radio" name="dorgarganta" value="Sim">Sim</label>
                 <input type="radio" name="dorgarganta" value="Não">Não</label>
             </td>
-            <td><input type="radio" name="congnasal" value="Sim">Sim</label>
-                <input type="radio" name="congnasal" value="Não">Não</label>
+            <td><input type="radio" name="diarreia" value="Sim">Sim</label>
+                <input type="radio" name="diarreia" value="Não">Não</label>
             </td>
         </tr>
         <tr align="center">

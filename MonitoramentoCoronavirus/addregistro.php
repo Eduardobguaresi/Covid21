@@ -17,7 +17,7 @@ $rua = isset($_POST['rua']) ? $_POST['rua'] : null;
 
 
 
-$sql="INSERT INTO  paciente(nompac, datpac, pespac, altpac, cpfpac, sexpac, usupac, senhapac, ruaend, cidend, cepend, estend) VALUES (:nome, :dataN,  :peso, :altpaciente, :cpf, :sexo, :usuario, :senha, :rua, :cidade, :cep, :estado)";
+$sql="INSERT INTO  paciente(nompac, datpac, pespac, altpac, cpfpac, sexpac, usupac, senpac, ruapac, cidpac, ceppac, estpac) VALUES (:nome, :dataN,  :peso, :altpaciente, :cpf, :sexo, :usuario, :senha, :rua, :cidade, :cep, :estado)";
 $qryAdd= $PDO->prepare($sql);
 $qryAdd->bindParam(':nome', $nome);
 $qryAdd->bindParam(':dataN', $dataN);

@@ -1,23 +1,15 @@
 <?php
 include 'api.php';
-session_start();
-if($_SESSION['codUser'] != NULL){
-  include 'header_logado.php';
-}else{
-  $_SESSION['codUser'] = NULL;
-  include 'header.php';
-}
+include 'header.php';
 ?>         
 <html>
 <form  action ="" method="post">
-  <table  width="100%"  cellspacing="10" cellpadding="4">
+  <table  width="100%" align="center"  cellspacing="10" cellpadding="4">
         <tr align="center">
-            <td><button type="button" class="btn btn-lg btn-primary" disabled>Situação no Brasil</button></td>
             <td><button type="button" class="btn btn-lg btn-primary" disabled>Situação por Estado</button></td>
         </tr>
 
         <tr align="center">
-            <td></td>
             <td>
             <p>
                 <select name="estado">
@@ -58,33 +50,26 @@ if($_SESSION['codUser'] != NULL){
 
         <tr align="center">
 
-            <td></td>
 
             <td><b><?php echo $uf->state ?? ''?></b></td>
 
         </tr> 
         <tr align="center">
           <td>Casos </td>
-          <td>Casos </td>
         </tr>      
         <tr align="center">
-            <td><input type="text" placeholder="Casos" name="Casos"></td>
             <td><input type="text" placeholder="Casos" name="Casos" value="<?php echo $uf->cases ?? ''?>" ></td>
         </tr>
         <tr align="center">
           <td>Mortes </td>
-          <td>Mortes </td>
         </tr>      
         <tr align="center">
-            <td><input type="text" placeholder="Mortes" name="Mortes"></td>
             <td><input type="text" placeholder="Mortes" name="Mortes" value="<?php echo $uf->deaths ?? ''?>"></td>
         </tr>
         <tr align="center">
           <td>Suspeitos </td>
-          <td>Suspeitos </td>
         </tr>      
         <tr align="center">
-            <td><input type="text" placeholder="Suspeitos" name="Suspeitos"></td>
             <td><input type="text" placeholder="Suspeitos" name="Suspeitos" value="<?php echo $uf->suspects ?? ''?>"></td>
         </tr>
   </table> 
