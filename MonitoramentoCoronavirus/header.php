@@ -3,15 +3,16 @@ if($_SESSION['nivelUser'] != NULL){
 }else{
   $_SESSION['nivelUser']=0;
 }
-  
+
 ?>
+
 <html>
     <head>
         <meta charset="utf-8">
         <title> Monitoramento Coronavirus</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="./lib/css/estilo.css" />
+        <link rel="stylesheet" href="lib\css\estilo.css" />
     </head>
     <body>
         <div class="container">

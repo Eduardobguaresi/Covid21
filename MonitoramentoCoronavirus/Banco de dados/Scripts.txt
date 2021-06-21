@@ -1,0 +1,89 @@
+Select 1
+
+create view select_1 as
+select pa.codpac , pa.nompac from paciente pa
+inner join sintoma si on si.codpac=pa.codpac
+where TIMESTAMPDIFF (YEAR,pa.datpac,CURDATE())>40 and si.diasin ='Sim'
+ORDER by pa.nompac asc
+
+Select 2
+
+CREATE VIEW select_2 as
+select pa.nompac, pa.ceppac from paciente pa
+inner join sintoma si on si.codpac=pa.codpac
+where pa.sexpac='Masculino' and si.covsin='Positivo' and (pa.cidpac='Maravilha' or pa.cidpac='Descanso' or pa.cidpac='Pinhalzinho' or pa.cidpac='Chapecó' or pa.cidpac='Itapiranga')
+order by pa.ceppac desc , pa.nompac asc
+
+select 3
+
+create VIEW select_3 as
+SELECT pa.ceppac, pa.cidpac, count(si.covsin) from paciente pa
+inner join sintoma si on si.codpac=pa.codpac 
+where(si.covsin = 'Aguardando Resultado') 
+HAVING count(si.covsin)>4 and count(si.covsin)<11
+order by count(si.covsin) desc
+
+
+select 4
+
+create view select_4 as
+select TIMESTAMPDIFF (YEAR,pa.datpac,CURDATE()) as idade, count(si.covsin) as casos from paciente pa
+inner join sintoma si on si.codpac=pa.codpac
+where si.covsin='Positivo'
+having count(si.covsin)>20
+order by si.covsin asc
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Criado usuarios
+
+CREATE USER 'jefferson'@'localhost' IDENTIFIED BY 'jefe';
+//Dando todos os privilegios
+GRANT ALL PRIVILEGES ON covid21 . * TO 'jefferson'@'localhost';
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+triggers 
+
+
+create trigger create_paciente after INSERT
+on paciente
+for each row
+insert into auditoria (desaud) values ('Paciente Cadastrado!');
+
+create trigger cdt_sintomas after INSERT
+on paciente
+for each row
+insert into auditoria (desaud) values ('Sintomas Cadastrados!');
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+stored procedures 
+1-Transformar usuario em adm
+
+DELIMITER $$
+create PROCEDURE Transformar_adm(in id int)
+BEGIN
+update paciente 
+set nivel = 2
+where codpac= id;
+END $$
+DELIMITER ;
+
+
+2- Transformar adm em paciente
+
+DELIMITER $$
+create PROCEDURE Transformar_paciente(in id int)
+BEGIN
+update paciente 
+set nivel = 1
+where codpac= id;
+END $$
+DELIMITER ;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+backup
+
+D:\xampp\mysql\bin\mysqldump -u jefferson -p covid21 > "D:\xampp\htdocs\MonitoramentoCoronavirus\Banco de dados\backup\backup.sql"

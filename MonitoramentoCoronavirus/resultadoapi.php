@@ -4,7 +4,7 @@ include 'header.php';
 ?>         
 <html>
 <form  action ="" method="post">
-  <table  width="100%" align="center"  cellspacing="10" cellpadding="4">
+  <table  id="tabela_api" width="100%" align="center"  cellspacing="10" cellpadding="4">
         <tr align="center">
             <td><button type="button" class="btn btn-lg btn-primary" disabled>Situação por Estado</button></td>
         </tr>
